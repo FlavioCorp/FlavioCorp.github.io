@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Flavio Restaurante</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<section id="seccion1">
+		<header>
+			<h1>Flavio Restaurante</h1>
+			<p>¡Bienvenido!</p>
+
+			<div class="container-icon">
+				<div class="container-cart-icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="icon-cart"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+						/>
+					</svg>
+					<div class="count-products">
+						<span id="contador-productos">0</span>
+					</div>
+				</div>
+
+				<div class="container-cart-products hidden-cart">
+					<div class="row-product hidden">
+						<div class="cart-product">
+							<div class="info-cart-product">
+								<span class="cantidad-producto-carrito">1</span>
+								<p class="titulo-producto-carrito">Pollo a la brasa</p>
+								<span class="precio-producto-carrito">$65</span>
+							</div>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="icon-close"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</div>
+					</div>
+
+					<div class="cart-total hidden">
+						<h3>Total:</h3>
+						<span class="total-pagar">$148</span>
+					</div>
+					<p class="cart-empty">El carrito está vacío</p>
+				</div>
+			</div>
+		</header>
+		<div class="container-items">
+			<div class="item">
+				<figure>
+					<a class="boton-con-imagen" href="#Comidas">
+					<img
+						src="La-Granja-Real-Food-Chicken-1-Pollo-a-la-Brasa.png"
+						alt="producto">
+					</a>
+				</figure>
+				<div class="info-product">
+					<h2>Comidas</h2>
+				</div>
+			</div>
+			<div class="item">
+				<figure>
+					<img
+						src="ajidegallina.jpg"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Bebidas</h2>
+				</div>
+			</div>
+			<div class="item">
+				<figure>
+					<img
+						src="Ceviche.jpg"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Postres</h2>
+				</div>
+			
+		</div>
+
+		<script src="index.js"></script>
+		<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<h1>¡BIENVENIDO A ESTE MARAVILLOSO RESTAURANTE VIRTUAL!</h1>
+    <p>Esperamos que su visita sea placentera.</p>
+	<p>¡Sientase libre de añadir lo que desee comer al carrito de compras y contactarnos!</p>
+	<img src="https://media1.tenor.com/m/2io-zi4Ok6IAAAAC/cat-gato.gif" alt="ESTA ES UNA IMAGEN">
+	<p>Disfrute su comida</p>
+	<style>
+	.boton-con-imagen img {
+        vertical-align: middle; /* Alinear verticalmente la imagen */
+        margin-right: 5px; /* Espacio entre la imagen y el texto */
+        width: 30px; /* Ancho de la imagen */
+        height: auto; /* Altura automática para mantener la proporción */
+    }
+	</style>
+	<a class="boton-con-imagen" href="https://wa.me/+51969426336" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Mi Whatsaapp">
+	<p>Contáctanos.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</section>
+
+<section id="seccion2" class="hidden">
+	<div class="container-items">
+		<div class="item">
+			<figure>
+				<img
+					src="La-Granja-Real-Food-Chicken-1-Pollo-a-la-Brasa.png"
+					alt="producto"
+				/>
+			</figure>
+			<div class="info-product">
+				<h2>Pollo a la brasa</h2>
+				<p class="price">$60</p>
+				<button class="btn-add-cart">Añadir al carrito</button>
+			</div>
+		</div>
+		<div class="item">
+			<figure>
+				<img
+					src="ajidegallina.jpg"
+					alt="producto"
+				/>
+			</figure>
+			<div class="info-product">
+				<h2>Aji de gallina</h2>
+				<p class="price">$20</p>
+				<button class="btn-add-cart">Añadir al carrito</button>
+			</div>
+		</div>
+		<div class="item">
+			<figure>
+				<img
+					src="Ceviche.jpg"
+					alt="producto"
+				/>
+			</figure>
+			<div class="info-product">
+				<h2>Ceviche</h2>
+				<p class="price">$20</p>
+				<button class="btn-add-cart">Añadir al carrito</button>
+			</div>
+		</div>
+		<div class="item">
+			<figure>
+				<img
+					src="lomosaltao.jpeg"
+					alt="producto"
+				/>
+			</figure>
+			<div class="info-product">
+				<h2>Lomo saltado</h2>
+				<p class="price">$30</p>
+				<button class="btn-add-cart">Añadir al carrito</button>
+			</div>
+		</div>
+		<div class="item">
+			<figure>
+				<img
+					src="olacausa.jpg"
+					alt="producto"
+				/>
+			</figure>
+			<div class="info-product">
+				<h2>Causa</h2>
+				<p class="price">$10</p>
+				<button class="btn-add-cart">Añadir al carrito</button>
+			</div>
+		</div>
+	</section>
+	</body>
+</html>

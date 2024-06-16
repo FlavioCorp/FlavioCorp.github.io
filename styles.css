@@ -246,4 +246,91 @@ header{
     background-color: #fff; /* Establece un fondo para el contenido de la página */
     z-index: 1; /* Asegúrate de que el contenido de la página esté detrás del modal */
   }
-  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.comments-section {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.rating {
+    margin-bottom: 10px;
+}
+
+.stars {
+    display: inline-block;
+    font-size: 30px;
+}
+
+.stars input[type="radio"] {
+    display: none;
+}
+
+.stars label {
+    cursor: pointer;
+    color: #ccc;
+}
+
+.stars label:hover,
+.stars label:hover ~ label,
+.stars input[type="radio"]:checked ~ label {
+    color: #fdd835;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.comment-item {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.comment-item img {
+    width: 40px; /* Ajusta el tamaño de la imagen de perfil */
+    height: 40px; /* Ajusta el tamaño de la imagen de perfil */
+    border-radius: 50%; /* Para hacer la imagen circular */
+    margin-right: 10px; /* Espacio entre la imagen y el contenido */
+}
+
+.comment-content {
+    flex: 1; /* Para que el contenido del comentario ocupe todo el espacio restante */
+}
+
+.comment-content h3 {
+    margin-top: 0; /* Eliminar el margen superior del nombre */
+}
+
+.comment-content .rating {
+    margin-top: 5px; /* Espacio entre el nombre y la calificación */
+}

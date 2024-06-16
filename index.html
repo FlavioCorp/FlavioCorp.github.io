@@ -73,7 +73,7 @@
 		<div class="container-items">
 			<div class="item">
 				<figure>
-					<a class="boton-con-imagen" href="page2.html">
+					<a class="boton-con-imagen" href="comidas.html">
 					<img
 						src="La-Granja-Real-Food-Chicken-1-Pollo-a-la-Brasa.png"
 						alt="producto">
@@ -85,13 +85,14 @@
 			</div>
 			<div class="item">
 				<figure>
+				<a class="boton-con-imagen" href="bebidas.html">
 					<img
 						src="chicha.jpg"
-						alt="producto"
-					/>
-				</figure>
+						alt="producto">
+					</a>
 				<div class="info-product">
 					<h2>Bebidas</h2>
+				</figure>
 				</div>
 			</div>
 			<div class="item">
@@ -124,11 +125,6 @@
         height: auto; /* Altura automática para mantener la proporción */
     }
 	</style>
-	<div>
-	<a class="boton-con-imagen" href="https://wa.me/+51969426336" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Mi Whatsaapp">
-	<p>Contáctanos.</p>
-  </div>
 </div>
 
 <script src="script.js"></script>
@@ -258,7 +254,33 @@
 
 			</div>
 		</div>
+		
 
 	</section>
+	<div class="comments-section">
+        <h2>Comentarios</h2>
+        <form id="comment-form">
+            <input type="text" id="comment-name" placeholder="Nombre">
+            <textarea id="comment-text" placeholder="Escribe tu comentario"></textarea>
+            <div class="rating">
+                <span>Calificación:</span>
+                <div class="stars" id="stars">
+                    <input type="radio" name="star" class="star-1" id="star-1" value="1">
+                    <label for="star-1">&#9733;</label>
+                    <input type="radio" name="star" class="star-2" id="star-2" value="2">
+                    <label for="star-2">&#9733;</label>
+                    <input type="radio" name="star" class="star-3" id="star-3" value="3">
+                    <label for="star-3">&#9733;</label>
+                    <input type="radio" name="star" class="star-4" id="star-4" value="4">
+                    <label for="star-4">&#9733;</label>
+                    <input type="radio" name="star" class="star-5" id="star-5" value="5">
+                    <label for="star-5">&#9733;</label>
+                </div>
+            </div>
+            <button type="submit">Enviar comentario</button>
+        </form>
+        <div id="comments-list"></div>
+    </div>
+    <script src="script.js"></script>
 	</body>
 </html>

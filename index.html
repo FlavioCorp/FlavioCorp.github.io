@@ -9,12 +9,63 @@
 		/>
 		<title>Flavio Restaurante</title>
 		<link rel="stylesheet" href="styles.css" />
+		<style>
+		  /* Estilos para el modal y el fondo oscuro */
+		  .modal {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: white;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			z-index: 1000;
+		  }
+		  .overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 900;
+		  }
+		</style>
 	</head>
 	<body>
 		<section id="seccion1">
 		<header>
 			<h1>Flavio Restaurante</h1>
 			<p>¡Bienvenido!</p>
+			<div class="overlay" id="overlay"></div>
+
+<div class="modal" id="modal">
+	<h1>¡BIENVENIDO A ESTE MARAVILLOSO RESTAURANTE VIRTUAL!</h1>
+    <p>Esperamos que su visita sea placentera.</p>
+	<p>¡Sientase libre de añadir lo que desee comer al carrito de compras y contactarnos!</p>
+	<p>Disfrute su comida</p>
+  <button onclick="cerrarModal()">Cerrar</button>
+</div>
+
+<script>
+  // Función para cerrar el modal
+  function cerrarModal() {
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  // Verificar si el modal ya ha sido mostrado
+  if (!localStorage.getItem('modalMostrado')) {
+    // Mostrar el modal y marcar como mostrado
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+    localStorage.setItem('modalMostrado', 'true');
+  }
+</script>
+
 
 			<div class="container-icon">
 				<div class="container-cart-icon">
@@ -128,14 +179,6 @@
 		</div>
 
 		<script src="index.js"></script>
-		<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-	<h1>¡BIENVENIDO A ESTE MARAVILLOSO RESTAURANTE VIRTUAL!</h1>
-    <p>Esperamos que su visita sea placentera.</p>
-	<p>¡Sientase libre de añadir lo que desee comer al carrito de compras y contactarnos!</p>
-	<p>Disfrute su comida</p>
-</div>
 
 <script src="script.js"></script>
 </section>

@@ -59,8 +59,6 @@ function addComment(name, rating, text) {
 
     // Asignar imagen de perfil aleatoria
     const profileImages = [
-        'avatar1.png',
-        'avatar2.png',
         'avatar21.png',
         'avatar32.png'
     ];

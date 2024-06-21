@@ -246,7 +246,7 @@ header{
     z-index: 1; /* Asegúrate de que el contenido de la página esté detrás del modal */
   }
   .comment-section {
-    max-width: 600px;
+    max-width: px;
     margin: 0 auto;
     background: #fff;
     padding: 20px;

@@ -10,80 +10,79 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("seccion2").classList.add("hidden");
   }
 });
-document.addEventListener("DOMContentLoaded", function() {
-  const stars = document.querySelectorAll('.stars input[type="radio"]');
-  const starsLabels = document.querySelectorAll('.stars label');
-  const commentForm = document.getElementById('comment-form');
-  const commentsList = document.getElementById('comments-list');
-  const defaultAvatars = [
-      'avatar1.png',
-      'avatar2.png',
-      'avatar3.png',
-      'avatar4.png',
-      'avatar5.png'
-  ];
-
-  stars.forEach(star => {
-      star.addEventListener('change', function() {
-          resetStarColors();
-          highlightStars(parseInt(this.value));
-      });
-  });
-
-  commentForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const name = document.getElementById('comment-name').value;
-      const comment = document.getElementById('comment-text').value;
-      const rating = document.querySelector('.stars input[type="radio"]:checked').value;
-
-      if (name.trim() === '' || comment.trim() === '' || !rating) {
-          alert('Por favor completa todos los campos y selecciona una calificación.');
-          return;
-      }
-
-      const avatarIndex = Math.floor(Math.random() * defaultAvatars.length);
-      const avatar = defaultAvatars[avatarIndex];
-
-      const commentItem = document.createElement('div');
-      commentItem.classList.add('comment-item');
-      commentItem.innerHTML = `
-          <img src="${avatar}" alt="Avatar" class="avatar">
-          <div class="comment-content">
-              <h3>${name}</h3>
-              <div class="rating">${getStarsHTML(parseInt(rating))}</div>
-              <p>${comment}</p>
-          </div>
-      `;
-
-      commentsList.appendChild(commentItem);
-
-      // Limpiar formulario
-      document.getElementById('comment-name').value = '';
-      document.getElementById('comment-text').value = '';
-      resetStarColors();
-  });
-
-  function resetStarColors() {
-      starsLabels.forEach(label => {
-          label.style.color = '#ccc';
-      });
-  }
-
-  function highlightStars(num) {
-      for (let i = 0; i < num; i++) {
-          starsLabels[i].style.color = '#fdd835';
-      }
-  }
-
-  function getStarsHTML(num) {
-      let starsHTML = '';
-      for (let i = 0; i < num; i++) {
-          starsHTML += '&#9733;'; // Código HTML para una estrella sólida
-      }
-      return starsHTML;
-  }
-});
 
     
 });
+let selectedRating = 0;
+
+// Selecciona estrellas y añade manejadores de eventos
+document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', (event) => {
+        selectRating(event);
+    });
+});
+
+function selectRating(event) {
+    // Limpiar selección previa
+    document.querySelectorAll('.star').forEach(star => {
+        star.classList.remove('selected');
+    });
+
+    // Seleccionar estrellas hasta la seleccionada
+    const selectedStar = event.target;
+    selectedRating = selectedStar.getAttribute('data-value');
+    selectedStar.classList.add('selected');
+    let previousSibling = selectedStar.previousElementSibling;
+    while (previousSibling) {
+        previousSibling.classList.add('selected');
+        previousSibling = previousSibling.previousElementSibling;
+    }
+}
+
+// Manejador del botón de envío
+document.getElementById('submit-btn').addEventListener('click', () => {
+    const name = document.getElementById('name').value;
+    const commentText = document.getElementById('comment').value;
+    if (selectedRating > 0 && name.trim() !== '' && commentText.trim() !== '') {
+        addComment(name, selectedRating, commentText);
+        clearForm();
+    } else {
+        alert('Por favor, completa todos los campos y selecciona una calificación.');
+    }
+});
+
+// Añadir comentario
+function addComment(name, rating, text) {
+    const commentList = document.getElementById('comments-list');
+    const comment = document.createElement('div');
+    comment.classList.add('comment');
+
+    // Asignar imagen de perfil aleatoria
+    const profileImages = [
+        'avatar1.png',
+        'avatar2.png',
+        'avatar21.png',
+        'avatar32.png'
+    ];
+    const randomImage = profileImages[Math.floor(Math.random() * profileImages.length)];
+
+    comment.innerHTML = `
+        <img src="${randomImage}" alt="Perfil">
+        <div class="details">
+            <span class="name">${name}</span>
+            <div class="rating">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</div>
+            <p>${text}</p>
+        </div>
+    `;
+    commentList.appendChild(comment);
+}
+
+// Limpiar formulario
+function clearForm() {
+    document.getElementById('name').value = '';
+    document.getElementById('comment').value = '';
+    selectedRating = 0;
+    document.querySelectorAll('.star').forEach(star => {
+        star.classList.remove('selected');
+    });
+}

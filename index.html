@@ -307,31 +307,21 @@
 
 			</div>
 		</div>
-		
-
-	</section>
-	<div class="comments-section">
-        <h2>Comentarios</h2>
-        <form id="comment-form">
-            <input type="text" id="comment-name" placeholder="Nombre">
-            <textarea id="comment-text" placeholder="Escribe tu comentario"></textarea>
-            <div class="rating">
-                <span>Calificación:</span>
-                <div class="stars" id="stars">
-                    <input type="radio" name="star" class="star-1" id="star-1" value="1">
-                    <label for="star-1">&#9733;</label>
-                    <input type="radio" name="star" class="star-2" id="star-2" value="2">
-                    <label for="star-2">&#9733;</label>
-                    <input type="radio" name="star" class="star-3" id="star-3" value="3">
-                    <label for="star-3">&#9733;</label>
-                    <input type="radio" name="star" class="star-4" id="star-4" value="4">
-                    <label for="star-4">&#9733;</label>
-                    <input type="radio" name="star" class="star-5" id="star-5" value="5">
-                    <label for="star-5">&#9733;</label>
-                </div>
-            </div>
-            <button type="submit">Enviar comentario</button>
-        </form>
+    </div>
+	<div class="comment-section">
+        <h2>Deja tu comentario</h2>
+        <input type="text" id="name" placeholder="Tu nombre" required>
+        <div class="star-rating">
+            <span class="star" data-value="5">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="1">★</span>
+        </div>
+        <textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
+        <button id="submit-btn">Enviar</button>
+        
+        <h3>Comentarios</h3>
         <div id="comments-list"></div>
     </div>
     <script src="script.js"></script>

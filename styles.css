@@ -245,91 +245,93 @@ header{
     background-color: #fff; /* Establece un fondo para el contenido de la página */
     z-index: 1; /* Asegúrate de que el contenido de la página esté detrás del modal */
   }
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
-}
-
-.comments-section {
+  .comment-section {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form {
-    margin-bottom: 20px;
+h2, h3 {
+    text-align: center;
 }
 
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.star-rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
-.rating {
-    margin-bottom: 10px;
-}
-
-.stars {
-    display: inline-block;
-    font-size: 30px;
-}
-
-.stars input[type="radio"] {
-    display: none;
-}
-
-.stars label {
+.star {
+    font-size: 2em;
     cursor: pointer;
     color: #ccc;
+    margin: 0 5px;
+    transition: color 0.2s;
 }
 
-.stars label:hover,
-.stars label:hover ~ label,
-.stars input[type="radio"]:checked ~ label {
-    color: #fdd835;
+.star:hover,
+.star:hover ~ .star,
+.star.selected,
+.star.selected ~ .star {
+    color: #ffcd3c;
+}
+
+textarea, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
 
 button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
     border: none;
     border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #45a049;
+    background: #0056b3;
 }
 
-.comment-item {
+.comment {
     display: flex;
-    margin-bottom: 20px;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
 
-.comment-item img {
-    width: 40px; /* Ajusta el tamaño de la imagen de perfil */
-    height: 40px; /* Ajusta el tamaño de la imagen de perfil */
-    border-radius: 50%; /* Para hacer la imagen circular */
-    margin-right: 10px; /* Espacio entre la imagen y el contenido */
+.comment img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
-.comment-content {
-    flex: 1; /* Para que el contenido del comentario ocupe todo el espacio restante */
+.comment .details {
+    flex: 1;
 }
 
-.comment-content h3 {
-    margin-top: 0; /* Eliminar el margen superior del nombre */
+.comment .details .name {
+    font-weight: bold;
 }
 
-.comment-content .rating {
-    margin-top: 5px; /* Espacio entre el nombre y la calificación */
+.comment .details .rating {
+    color: #ffcd3c;
+}
+
+.comment .details p {
+    margin: 5px 0 0;
 }

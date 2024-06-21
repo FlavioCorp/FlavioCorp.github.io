@@ -36,6 +36,22 @@
 		</style>
 	</head>
 	<body>
+		<div class="comment-section">
+			<h2>Deja tu comentario</h2>
+			<input type="text" id="name" placeholder="Tu nombre" required>
+			<div class="star-rating">
+				<span class="star" data-value="5">★</span>
+				<span class="star" data-value="4">★</span>
+				<span class="star" data-value="3">★</span>
+				<span class="star" data-value="2">★</span>
+				<span class="star" data-value="1">★</span>
+			</div>
+			<textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
+			<button id="submit-btn">Enviar</button>
+			
+			<h3>Comentarios</h3>
+			<div id="comments-list"></div>
+		</div>
 		<section id="seccion1">
 		<header>
 			<h1>Flavio Restaurante</h1>
@@ -303,27 +319,6 @@
 			<button class="btn-add-cart">Añadir al carrito</button>
 		</div>
 	</div>
-</div>
-
-			</div>
-		</div>
-    </div>
-	<div class="comment-section">
-        <h2>Deja tu comentario</h2>
-        <input type="text" id="name" placeholder="Tu nombre" required>
-        <div class="star-rating">
-            <span class="star" data-value="5">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="1">★</span>
-        </div>
-        <textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
-        <button id="submit-btn">Enviar</button>
-        
-        <h3>Comentarios</h3>
-        <div id="comments-list"></div>
-    </div>
     <script src="script.js"></script>
 	</body>
 </html>

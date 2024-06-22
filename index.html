@@ -36,24 +36,18 @@
 		</style>
 	</head>
 	<body>
-		<footer>
-		<div class="comment-section">
-			<h2>Deja tu comentario</h2>
-			<input type="text" id="name" placeholder="Tu nombre" required>
-			<div class="star-rating">
-				<span class="star" data-value="5">★</span>
-				<span class="star" data-value="4">★</span>
-				<span class="star" data-value="3">★</span>
-				<span class="star" data-value="2">★</span>
-				<span class="star" data-value="1">★</span>
-			</div>
-			<textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
-			<button id="submit-btn">Enviar</button>
-			
-			<h3>Comentarios</h3>
-			<div id="comments-list"></div>
-		</div>
-		</footer>
+		<style>
+		audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- La etiqueta audio sin controles -->
+    <audio id="bg-music" autoplay loop>
+        <source src="salsa.mp3" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
 		<section id="seccion1">
 		<header>
 			<h1>Flavio Restaurante</h1>
@@ -83,8 +77,6 @@
     localStorage.setItem('modalMostrado', 'true');
   }
 </script>
-
-
 			<div class="container-icon">
 				<div class="container-cart-icon">
 					<svg
@@ -314,6 +306,26 @@
 				src="olacausa.jpg"
 				alt="producto"
 			/>
+		</figure>
+		<figure>
+			<footer>
+			<div class="comment-section">
+				<h2>Deja tu comentario</h2>
+				<input type="text" id="name" placeholder="Tu nombre" required>
+				<div class="star-rating">
+					<span class="star" data-value="5">★</span>
+					<span class="star" data-value="4">★</span>
+					<span class="star" data-value="3">★</span>
+					<span class="star" data-value="2">★</span>
+					<span class="star" data-value="1">★</span>
+				</div>
+				<textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
+				<button id="submit-btn">Enviar</button>
+				
+				<h3>Comentarios</h3>
+				<div id="comments-list"></div>
+			</div>
+			</footer>
 		</figure>
 		<div class="info-product">
 			<h2>Causa</h2>

@@ -9,6 +9,41 @@
 		/>
 		<title>Flavio Restaurante</title>
 		<link rel="stylesheet" href="styles.css" />
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Música de Fondo</title>
+    <style>
+        /* Estilo para el botón */
+        #play-pause-btn {
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+        }
+
+        /* Estilo para los íconos */
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Oculta la etiqueta de audio */
+        audio {
+            display: none;
+        }
+    </style>
 		<style>
 		  /* Estilos para el modal y el fondo oscuro */
 		  .modal {
@@ -36,17 +71,40 @@
 		  </style>
 		  </head>
 	<body>
-		<style>
-		audio {
-            display: none;
-		}
-    </style>
-<body>
+		
     <!-- La etiqueta audio sin controles -->
     <audio id="bg-music" autoplay loop>
-        <source src="tu-musica.mp3" type="audio/mpeg">
+        <source src="salsa.mp3" type="audio/mpeg">
         Tu navegador no soporta la etiqueta de audio.
     </audio>
+	<button id="play-pause-btn" onclick="togglePlayPause()">
+        <!-- Ícono de play -->
+        <svg id="play-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <!-- Ícono de pausa, inicialmente oculto -->
+        <svg id="pause-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 19h4V5H6zm8-14v14h4V5z"/>
+        </svg>
+    </button>
+	<script>
+        // Función para alternar entre play y pausa
+        function togglePlayPause() {
+            var audio = document.getElementById('bg-music');
+            var playIcon = document.getElementById('play-icon');
+            var pauseIcon = document.getElementById('pause-icon');
+
+            if (audio.paused) {
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline';
+            } else {
+                audio.pause();
+                playIcon.style.display = 'inline';
+                pauseIcon.style.display = 'none';
+            }
+        }
+    </script>
 		<section id="seccion1">
 		<header>
 			<h1>Flavio Restaurante</h1>
@@ -163,18 +221,9 @@
 				<style>.boton-con-imagen {
 					width: 500px; /* Ancho de la imagen */
 					height: 200px; /* Altura automática para mantener la proporción */
-				}</style>
-				</div>
-			</div>
-			<div class="container-items">
-			<div class="item">
-				<figure>
-					<style>
-						.postresbtn img {
-							width: 500px;
-							height: 200px;
-						}
-					</style>						
+				}
+				</style>
+
 					<a class="postresbtn" href="postres.html">
 					<img
 						src="postre.jpg"
@@ -306,32 +355,11 @@
 				alt="producto"
 			/>
 		</figure>
-		<figure>
-			<footer>
-			<div class="comment-section">
-				<h2>Deja tu comentario</h2>
-				<input type="text" id="name" placeholder="Tu nombre" required>
-				<div class="star-rating">
-					<span class="star" data-value="5">★</span>
-					<span class="star" data-value="4">★</span>
-					<span class="star" data-value="3">★</span>
-					<span class="star" data-value="2">★</span>
-					<span class="star" data-value="1">★</span>
-				</div>
-				<textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
-				<button id="submit-btn">Enviar</button>
-				
-				<h3>Comentarios</h3>
-				<div id="comments-list"></div>
-			</div>
-			</footer>
-		</figure>
 		<div class="info-product">
 			<h2>Causa</h2>
 			<p class="price">$10</p>
 			<button class="btn-add-cart">Añadir al carrito</button>
 		</div>
-	</div>
     <script src="script.js"></script>
 	</body>
 </html>

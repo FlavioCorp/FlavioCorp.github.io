@@ -139,6 +139,14 @@ header{
 
 
 /* Main */
+.container2 {
+    padding: 20px;
+    height: 400px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 .container {
     background-color: #838383;
     padding: 20px;

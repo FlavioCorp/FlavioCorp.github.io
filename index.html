@@ -233,75 +233,19 @@
 	<footer>
         <div class="comment-section">
             <h2>Deja tu comentario</h2>
-            <form id="comment-form">
-                <input type="text" id="name" placeholder="Tu nombre" required><br><br>
-                <div class="star-rating">
-                    <!-- Estrellas para calificación, si es necesario -->
-                </div>
-                <textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea><br><br>
-                <button type="submit">Enviar</button>
-            </form>
-    
+            <input type="text" id="name" placeholder="Tu nombre" required>
+             <div class="star-rating">
+        <span class="star" data-value="5">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="1">★</span>
+    </div>
+            <textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
+            <button id="submit-btn">Enviar</button>
+
             <h3>Comentarios</h3>
-            <ul id="comments-list">
-                <!-- Lista de comentarios, se actualizará dinámicamente -->
-            </ul>
-        </div>
-    
-        <!-- Script para manejar el envío de comentarios y la carga dinámica -->
-        <script>
-            document.getElementById('comment-form').addEventListener('submit', async function(event) {
-                event.preventDefault();
-                const name = document.getElementById('name').value;
-                const content = document.getElementById('comment').value;
-    
-                try {
-                    const response = await fetch('/api/comments', { // Ajusta la ruta según tu backend
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ name, content }),
-                    });
-    
-                    if (!response.ok) {
-                        throw new Error('Error al enviar comentario');
-                    }
-    
-                    alert('Comentario enviado correctamente');
-                    loadComments(); // Cargar comentarios actualizados
-                    document.getElementById('comment-form').reset(); // Limpiar formulario
-    
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Hubo un problema al enviar el comentario');
-                }
-            });
-    
-            async function loadComments() {
-                try {
-                    const response = await fetch('/api/comments'); // Ajusta la ruta según tu backend
-                    if (!response.ok) {
-                        throw new Error('Error al cargar comentarios');
-                    }
-                    const comments = await response.json();
-                    const commentsList = document.getElementById('comments-list');
-                    commentsList.innerHTML = ''; // Limpiar lista de comentarios antes de mostrar nuevos
-                    comments.forEach(comment => {
-                        const li = document.createElement('li');
-                        li.textContent = `${comment.name}: ${comment.content}`;
-                        commentsList.appendChild(li);
-                    });
-    
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Hubo un problema al cargar los comentarios');
-                }
-            }
-    
-            // Cargar comentarios al cargar la página
-            document.addEventListener('DOMContentLoaded', loadComments);
-        </script>
+            <div id="comments-list"></div>
 
 			<script>
 				document.addEventListener('DOMContentLoaded', function() {

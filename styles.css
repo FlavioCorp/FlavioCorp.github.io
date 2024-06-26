@@ -194,7 +194,7 @@ header{
 
 .info-product{
     padding: 15px 30px;
-    line-height: 0;
+    line-height: center;
     display: flex;
     flex-direction: column;
     gap: 10px;

@@ -139,9 +139,17 @@ header{
 
 
 /* Main */
+.container3 {
+    padding: 20px;
+    height: 500px;
+    border-radius: 4px;
+    text-align: center;
+    display: grid;
+}
+
 .container2 {
     padding: 20px;
-    height: 800px;
+    height: 820px;
     border-radius: 4px;
     text-align: center;
     display: grid;

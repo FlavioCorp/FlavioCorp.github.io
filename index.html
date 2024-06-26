@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0"
-		/>
-		<title>Flavio Restaurante</title>
-
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-		<meta name="msapplication-TileColor" content="#da532c">
-		<meta name="theme-color" content="#ffffff">
-
-		<link rel="stylesheet" href="styles.css" />
-		<meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página con Música de Fondo</title>
+    <title>Flavio Restaurante</title>
+
+    <!-- Favicon y manifest -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Estilos en línea específicos -->
     <style>
-        /* Estilo para el botón */
+        /* Estilo para el botón de música */
         #play-pause-btn {
             position: fixed;
             left: 10px;
@@ -41,7 +39,7 @@
             outline: none;
         }
 
-        /* Estilo para los íconos */
+        /* Estilo para los íconos de música */
         .icon {
             width: 24px;
             height: 24px;
@@ -52,233 +50,152 @@
         audio {
             display: none;
         }
+
+        /* Estilos para el modal y el fondo oscuro */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 900;
+        }
     </style>
-		<style>
-		  /* Estilos para el modal y el fondo oscuro */
-		  .modal {
-			display: none;
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			background-color: white;
-			padding: 20px;
-			border-radius: 8px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-			z-index: 1000;
-		  }
-		  .overlay {
-			display: none;
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-color: rgba(0, 0, 0, 0.5);
-			z-index: 900;
-		  }
-		  </style>
-		  </head>
-	<body>
-			
-    <!-- La etiqueta audio sin controles -->
-    <audio id="bg-music" autoplay loop>
-        <source src="salsa.mp3" type="audio/mpeg">
-        Tu navegador no soporta la etiqueta de audio.
-    </audio>
-	<button id="play-pause-btn" onclick="togglePlayPause()">
-        <!-- Ícono de play -->
-        <svg id="play-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-        </svg>
-        <!-- Ícono de pausa, inicialmente oculto -->
-        <svg id="pause-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
-            <path d="M6 19h4V5H6zm8-14v14h4V5z"/>
-        </svg>
-    </button>
-	<script>
-        // Función para alternar entre play y pausa
-        function togglePlayPause() {
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Flavio Restaurante</h1>
+        <p>¡Bienvenido!</p>
+        
+        <!-- Carrito de compras -->
+        <div class="container-icon">
+            <div class="container-cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                </svg>
+                <div class="count-products">
+                    <span id="contador-productos">0</span>
+                </div>
+            </div>
+
+            <div class="container-cart-products hidden-cart">
+                <div class="row-product hidden">
+                    <div class="cart-product">
+                        <div class="info-cart-product">
+                            <span class="cantidad-producto-carrito">1</span>
+                            <p class="titulo-producto-carrito">Pollo a la brasa</p>
+                            <span class="precio-producto-carrito">$65</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="cart-total hidden">
+                    <h3>Total:</h3>
+                    <span class="total-pagar">$148</span>
+                </div>
+                <p class="cart-empty">El carrito está vacío</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container2">
+        <div class="container">
+            <div class="container-items">
+                <!-- Sección de comidas -->
+                <div class="item">
+                    <figure>
+                        <a class="boton-con-imagen" href="comidas.html">
+                            <img src="La-Granja-Real-Food-Chicken-1-Pollo-a-la-Brasa.png" alt="Pollo a la brasa">
+                        </a>
+                    </figure>
+                    <div class="info-product">
+                        <h2>Comidas</h2>
+                    </div>
+                </div>
+
+                <!-- Sección de bebidas -->
+                <div class="item">
+                    <figure>
+                        <a class="boton-bebidas" href="bebidas.html">
+                            <img src="chicha.jpg" alt="Chicha">
+                        </a>
+                    </figure>
+                    <div class="info-product">
+                        <h2>Bebidas</h2>
+                    </div>
+                </div>
+
+                <!-- Sección de postres -->
+                <div class="item">
+                    <figure>
+                        <a class="postresbtn" href="postres.html">
+                            <img src="postre.jpg" alt="Postre">
+                        </a>
+                    </figure>
+                    <div class="info-product">
+                        <h2>Postres</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer con sección de comentarios -->
+    <footer>
+        <div class="comment-section">
+            <h2>Deja tu comentario</h2>
+            <input type="text" id="name" placeholder="Tu nombre" required>
+            <div class="star-rating">
+                <span class="star" data-value="5">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="1">★</span>
+            </div>
+            <textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
+            <button id="submit-btn">Enviar</button>
+
+            <h3>Comentarios</h3>
+            <div id="comments-list"></div>
+        </div>
+    </footer>
+
+    <!-- Scripts al final para optimización de carga -->
+    <script src="index.js"></script>
+    <script src="script.js"></script>
+    <script>
+
+        // Reproducir la música automáticamente al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('bg-music');
             var playIcon = document.getElementById('play-icon');
             var pauseIcon = document.getElementById('pause-icon');
 
-            if (audio.paused) {
-                audio.play();
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'inline';
-            } else {
-                audio.pause();
-                playIcon.style.display = 'inline';
-                pauseIcon.style.display = 'none';
-            }
-        }
+            audio.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'inline';
+        });
     </script>
-		<section id="seccion1">
-		<header>
-			<h1>Flavio Restaurante</h1>
-			<p>¡Bienvenido!</p>
-			<div class="overlay" id="overlay"></div>
-
-<div class="modal" id="modal">
-	<h1>¡BIENVENIDO A ESTE MARAVILLOSO RESTAURANTE VIRTUAL!</h1>
-    <p>Esperamos que su visita sea placentera.</p>
-	<p>¡Sientase libre de añadir lo que desee comer al carrito de compras y contactarnos!</p>
-	<p>Disfrute su comida</p>
-  <button onclick="cerrarModal()">Cerrar</button>
-</div>
-
-<script>
-  // Función para cerrar el modal
-  function cerrarModal() {
-    document.getElementById('modal').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';
-  }
-
-  // Verificar si el modal ya ha sido mostrado
-  if (!localStorage.getItem('modalMostrado')) {
-    // Mostrar el modal y marcar como mostrado
-    document.getElementById('modal').style.display = 'block';
-    document.getElementById('overlay').style.display = 'block';
-    localStorage.setItem('modalMostrado', 'true');
-  }
-</script>
-			<div class="container-icon">
-				<div class="container-cart-icon">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="icon-cart"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-						/>
-					</svg>
-					<div class="count-products">
-						<span id="contador-productos">0</span>
-					</div>
-				</div>
-				<div class="container-cart-products hidden-cart">
-					<div class="row-product hidden">
-						<div class="cart-product">
-							<div class="info-cart-product">
-								<span class="cantidad-producto-carrito">1</span>
-								<p class="titulo-producto-carrito">Pollo a la brasa</p>
-								<span class="precio-producto-carrito">$65</span>
-							</div>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								class="icon-close"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M6 18L18 6M6 6l12 12"
-								/>
-							</svg>
-						</div>
-					</div>
-
-					<div class="cart-total hidden">
-						<h3>Total:</h3>
-						<span class="total-pagar">$148</span>
-					</div>
-					<p class="cart-empty">El carrito está vacío</p>
-				</div>
-			</div>
-		</header>
-		<div class="container2">
-		<div class="container">
-		<div class="container-items">
-			<div class="item">
-				<figure>
-					<style>
-						.boton-con-imagen img {
-							width: 500px;
-							height: 200px;
-						}
-					</style>
-					<a class="boton-con-imagen" href="comidas.html">
-					<img
-						src="La-Granja-Real-Food-Chicken-1-Pollo-a-la-Brasa.png"
-						alt="producto">
-					</a>
-				</figure>
-				<div class="info-product">
-					<h2>Comidas</h2>
-				</div>
-			</div>
-			<div class="container-items">
-			<div class="item">
-				<figure>
-					<style>
-						.boton-con-imagen {
-						width: 500px; /* Ancho de la imagen */
-						height: 200px; /* Altura automática para mantener la proporción */
-					}
-					</style>
-				<a class="boton-bebidas" href="bebidas.html">
-					<img
-						src="chicha.jpg"
-						alt="producto">
-					</a>
-					</figure>
-				<div class="info-product">
-					<h2>Bebidas</h2>
-				</div>
-				</div>
-				<div class="container-items">
-					<div class="item">
-						<figure>
-							<style>
-								.boton-con-imagen img {
-									width: 500px;
-									height: 200px;
-								}
-							</style>
-							<a class="postresbtn" href="postres.html">
-							<img
-								src="postre.jpg"
-								alt="producto">
-							</a>
-						</figure>
-						<div class="info-product">
-							<h2>Postres</h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer>
-		<div class="comment-section">
-			<h2>Deja tu comentario</h2>
-			<input type="text" id="name" placeholder="Tu nombre" required>
-			<div class="star-rating">
-				<span class="star" data-value="5">★</span>
-				<span class="star" data-value="4">★</span>
-				<span class="star" data-value="3">★</span>
-				<span class="star" data-value="2">★</span>
-				<span class="star" data-value="1">★</span>
-			</div>
-			<textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
-			<button id="submit-btn">Enviar</button>
-
-			<h3>Comentarios</h3>
-			<div id="comments-list"></div>
-		</div>
-	</footer>
-	</div>
-		<script src="index.js"></script>
-<script src="script.js"></script>
-	</body>
+</body>
 </html>

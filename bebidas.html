@@ -136,6 +136,32 @@
             <h3>Comentarios</h3>
             <div id="comments-list"></div>
         </div>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const stars = document.querySelectorAll('.star');
+				const ratingInput = document.getElementById('rating');
+	
+				stars.forEach(star => {
+					star.addEventListener('click', function() {
+						const value = parseInt(this.getAttribute('data-value'));
+						ratingInput.value = value;
+						updateStars(value);
+					});
+				});
+	
+				function updateStars(value) {
+					stars.forEach(star => {
+						const starValue = parseInt(star.getAttribute('data-value'));
+						if (starValue <= value) {
+							star.style.color = 'gold';
+						} else {
+							star.style.color = 'black';
+						}
+					});
+				}
+			});
+		</script>
     </footer>
     <!-- Archivo JavaScript -->
     <script src="script.js"></script>

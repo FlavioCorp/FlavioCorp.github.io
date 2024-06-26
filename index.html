@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Flavio Restaurante</title>
 
     <!-- Favicon y manifest -->
@@ -74,6 +74,15 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 900;
+        }
+		.star-rating {
+            display: inline-block;
+            font-size: 0;
+        }
+        .star-rating .star {
+            display: inline-block;
+            font-size: 24px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -177,19 +186,44 @@
         <div class="comment-section">
             <h2>Deja tu comentario</h2>
             <input type="text" id="name" placeholder="Tu nombre" required>
-            <div class="star-rating">
-                <span class="star" data-value="5">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="1">★</span>
-            </div>
+			<div class="star-rating">
+				<span class="star" data-value="5">★</span>
+				<span class="star" data-value="4">★</span>
+				<span class="star" data-value="3">★</span>
+				<span class="star" data-value="2">★</span>
+				<span class="star" data-value="1">★</span>
+			</div>
             <textarea id="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
             <button id="submit-btn">Enviar</button>
-
             <h3>Comentarios</h3>
             <div id="comments-list"></div>
         </div>
+		
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const stars = document.querySelectorAll('.star');
+				const ratingInput = document.getElementById('rating');
+	
+				stars.forEach(star => {
+					star.addEventListener('click', function() {
+						const value = parseInt(this.getAttribute('data-value'));
+						ratingInput.value = value;
+						updateStars(value);
+					});
+				});
+	
+				function updateStars(value) {
+					stars.forEach(star => {
+						const starValue = parseInt(star.getAttribute('data-value'));
+						if (starValue <= value) {
+							star.style.color = 'gold';
+						} else {
+							star.style.color = 'black';
+						}
+					});
+				}
+			});
+		</script>
 	</footer>
     <!-- Scripts al final para optimización de carga -->
     <script src="index.js"></script>

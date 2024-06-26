@@ -84,6 +84,18 @@
         <h1>Flavio Restaurante</h1>
         <p>¡Bienvenido!</p>
         
+        <!-- Botón para controlar la música de fondo -->
+        <button id="play-pause-btn" onclick="togglePlayPause()">
+            <!-- Ícono de play -->
+            <svg id="play-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <!-- Ícono de pausa, inicialmente oculto -->
+            <svg id="pause-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6zm8-14v14h4V5z"/>
+            </svg>
+        </button>
+
         <!-- Carrito de compras -->
         <div class="container-icon">
             <div class="container-cart-icon">
@@ -160,7 +172,6 @@
             </div>
         </div>
     </main>
-
     <!-- Footer con sección de comentarios -->
         <div class="comment-section">
             <h2>Deja tu comentario</h2>
@@ -179,11 +190,26 @@
             <div id="comments-list"></div>
         </div>
 
-
     <!-- Scripts al final para optimización de carga -->
     <script src="index.js"></script>
     <script src="script.js"></script>
     <script>
+        // Función para alternar entre play y pausa
+        function togglePlayPause() {
+            var audio = document.getElementById('bg-music');
+            var playIcon = document.getElementById('play-icon');
+            var pauseIcon = document.getElementById('pause-icon');
+
+            if (audio.paused) {
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline';
+            } else {
+                audio.pause();
+                playIcon.style.display = 'inline';
+                pauseIcon.style.display = 'none';
+            }
+        }
 
         // Reproducir la música automáticamente al cargar la página
         document.addEventListener('DOMContentLoaded', function() {

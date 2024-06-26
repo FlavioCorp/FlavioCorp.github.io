@@ -194,14 +194,14 @@ header{
 
 .info-product{
     padding: 15px 30px;
-    line-height: 4;
+    line-height: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 .price{
-    font-size: 18px;
+    font-size: -5px;
     font-weight: 900;
 }
 

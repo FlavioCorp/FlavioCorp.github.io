@@ -50,6 +50,7 @@
                 <div class="cart-total hidden">
                     <h3>Total:</h3>
                     <span class="total-pagar">$148</span>
+                    <button id="send-order-btn">Enviar Pedido</button>
                 </div>
                 <p class="cart-empty">El carrito está vacío</p>
             </div>
@@ -161,7 +162,68 @@
 			</script>
         </div>
     </footer>
-
+    <div id="special-orders" style="display:none;">
+        <h2>Pedidos Especiales</h2>
+        <ul id="orders-list">
+            <!-- Los pedidos se agregarán aquí -->
+        </ul>
+    </div>
+    <script>
+        document.getElementById('send-order-btn').addEventListener('click', function() {
+            // Obtiene los items del carrito
+            const cartItems = document.getElementById('cart-items').children;
+        
+            // Verifica si hay items en el carrito
+            if (cartItems.length === 0) {
+                alert('El carrito está vacío.');
+                return;
+            }
+        
+            // Crea un nuevo pedido
+            const order = document.createElement('li');
+            order.classList.add('order-item');
+        
+            // Copia los items del carrito al nuevo pedido
+            const orderContent = document.createElement('ul');
+            for (let item of cartItems) {
+                const clonedItem = item.cloneNode(true);
+                orderContent.appendChild(clonedItem);
+            }
+            order.appendChild(orderContent);
+        
+            // Agrega el nuevo pedido a la lista de pedidos
+            document.getElementById('orders-list').appendChild(order);
+        
+            // Limpia el carrito
+            document.getElementById('cart-items').innerHTML = '';
+        
+            // Muestra una confirmación
+            alert('Pedido enviado al apartado especial.');
+        
+            // Aquí podrías agregar lógica adicional para almacenar o enviar el pedido a un servidor.
+        });
+        </script>
+<style>
+    #special-orders.admin-visible {
+        display: block;
+    }
+    </style>
+    
+    <script>
+    // Función de autenticación simplificada
+    function authenticate() {
+        const password = prompt('Ingrese la contraseña para ver los pedidos:');
+        if (password === 'flavioesmuyinteligente') {
+            document.getElementById('special-orders').classList.add('admin-visible');
+        } else {
+            alert('Contraseña incorrecta.');
+        }
+    }
+    
+    // Llama a la función de autenticación
+    authenticate();
+    </script>
+            
     <script src="index.js"></script>
     <script src="script.js"></script>
 </body>
